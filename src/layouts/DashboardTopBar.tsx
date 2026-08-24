@@ -1,14 +1,11 @@
-import { Menu, Bell } from "lucide-react";
+import { Bell, ArrowRight } from "lucide-react";
 import type { CSSProperties } from "react";
 
 /**
  * Top navigation bar — white 60px bar with a thin black bottom border and soft
- * drop shadow. Left side: hamburger menu icon + page title. Right side:
- * notification bell (with a blue unread dot) and a circular profile avatar.
- *
- * Styled to match the Figma spec (Roboto, tracking 0.05em) while
- * remaining responsive — it stretches to full width instead of the fixed
- * 1645px design width.
+ * drop shadow. Left side: menu toggle (hamburger when sidebar open, arrow when
+ * collapsed) + page title. Right side: notification bell (with a blue unread
+ * dot) and a circular profile avatar.
  */
 export default function DashboardTopBar({
   title = "System Administrator",
@@ -17,6 +14,7 @@ export default function DashboardTopBar({
   onBellClick,
   onAvatarClick,
   hasNotification = true,
+  collapsed = false,
   style,
 }: {
   title?: string;
@@ -25,6 +23,7 @@ export default function DashboardTopBar({
   onBellClick?: () => void;
   onAvatarClick?: () => void;
   hasNotification?: boolean;
+  collapsed?: boolean;
   style?: CSSProperties;
 }) {
   return (
@@ -38,19 +37,29 @@ export default function DashboardTopBar({
     >
       {/* Inner navbar */}
       <div className="flex h-[42px] w-full items-center justify-between px-[40px]">
-        {/* Left: menu + title */}
+        {/* Left: menu toggle + title */}
         <div className="flex items-center gap-[14px]">
-          {/* Hamburger menu (38x19) */}
-          <button
-            type="button"
-            onClick={onMenuClick}
-            aria-label="Open menu"
-            className="relative flex h-[19px] w-[38px] shrink-0 items-center"
-          >
-            <span className="absolute left-[11.6px] top-[19px] h-0 w-[25.9px] border-t-[2px] border-black" />
-            <span className="absolute left-[10.9px] top-0 h-0 w-[27.1px] border-t-[2px] border-black" />
-            <span className="absolute left-0 top-[9.4px] h-0 w-[38px] border-t-[2px] border-black" />
-          </button>
+          {collapsed ? (
+            <button
+              type="button"
+              onClick={onMenuClick}
+              aria-label="Expand menu"
+              className="flex h-[19px] w-[38px] shrink-0 cursor-pointer items-center justify-start"
+            >
+              <ArrowRight size={20} strokeWidth={2} className="text-black" />
+            </button>
+          ) : (
+            <button
+              type="button"
+              onClick={onMenuClick}
+              aria-label="Collapse menu"
+              className="relative flex h-[19px] w-[38px] shrink-0 cursor-pointer items-center"
+            >
+              <span className="absolute left-[11.6px] top-[19px] h-0 w-[25.9px] border-t-[2px] border-black" />
+              <span className="absolute left-[10.9px] top-0 h-0 w-[27.1px] border-t-[2px] border-black" />
+              <span className="absolute left-0 top-[9.4px] h-0 w-[38px] border-t-[2px] border-black" />
+            </button>
+          )}
 
           {/* Page title */}
           <h1
