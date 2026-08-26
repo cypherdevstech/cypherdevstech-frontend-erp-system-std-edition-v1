@@ -28,7 +28,6 @@ export const routeConfig = [
                     { index: true, element: <SystemstSetingsPage /> }
                 ]
             },
-            // branches
             {
                 path: 'branches',
                 children: [
