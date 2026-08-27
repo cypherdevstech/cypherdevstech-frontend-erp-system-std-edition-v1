@@ -1,41 +1,8 @@
 import { useState } from "react";
+import SystemSettingsTabs, { type SettingsTabKey } from "./SystemSettingsTabs";
 import SystemInformationForm from "./SystemInformationForm";
-
-type SettingsTabKey = "system-information" | "general" | "notifications" | "security";
-
-function SystemSettingsTabs({
-    activeTab,
-    onTabChange,
-}: {
-    activeTab: SettingsTabKey;
-    onTabChange: (tab: SettingsTabKey) => void;
-}) {
-    const tabs: { key: SettingsTabKey; label: string }[] = [
-        { key: "system-information", label: "System Information" },
-        { key: "general", label: "General" },
-        { key: "notifications", label: "Notifications" },
-        { key: "security", label: "Security" },
-    ];
-
-    return (
-        <div className="mb-6 flex gap-6 border-b border-[#E5E5E5]">
-            {tabs.map((tab) => (
-                <button
-                    key={tab.key}
-                    type="button"
-                    onClick={() => onTabChange(tab.key)}
-                    className={`pb-3 text-[14px] ${
-                        activeTab === tab.key
-                            ? "border-b-2 border-[#1D4ED8] font-medium text-[#1D4ED8]"
-                            : "text-[#6B6B6B]"
-                    }`}
-                >
-                    {tab.label}
-                </button>
-            ))}
-        </div>
-    );
-}
+import EmailProtocolForm from "./EmailProtocolForm";
+import ControlAlertForm from "./ControlAlertForm";
 
 export default function SettingsCard() {
     const [activeTab, setActiveTab] = useState<SettingsTabKey>("system-information");
@@ -45,10 +12,14 @@ export default function SettingsCard() {
             <SystemSettingsTabs activeTab={activeTab} onTabChange={setActiveTab} />
 
             {activeTab === "system-information" && <SystemInformationForm />}
+            {activeTab === "email-protocol" && <EmailProtocolForm />}
+            {activeTab === "control-alert" && <ControlAlertForm />}
 
-            {activeTab !== "system-information" && (
-                <p className="text-[14px] text-[#6B6B6B]">Not implemented yet.</p>
-            )}
+            {activeTab !== "system-information" &&
+                activeTab !== "email-protocol" &&
+                activeTab !== "control-alert" && (
+                    <p className="text-[14px] text-[#6B6B6B]">Not implemented yet.</p>
+                )}
         </div>
     );
 }
