@@ -1,4 +1,5 @@
 import MainLayout from "../layouts/MainLayout";
+import DashboardPage from "../page/dashboardPage";
 import BranchesPage from "../page/branchespage";
 import CreateBranchPage from "../page/createbranchpage";
 import CreateInvtoryPage from "../page/createinvtorypage";
@@ -11,6 +12,11 @@ export const routeConfig = [
         element: <MainLayout />,
         // errorElement: <NotFound />,
         children: [
+            // dashboard (index route)
+            {
+                index: true,
+                element: <DashboardPage />,
+            },
             //    inventory routes
             {
                 path: 'inventory',
