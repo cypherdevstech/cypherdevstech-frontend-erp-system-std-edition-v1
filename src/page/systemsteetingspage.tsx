@@ -1,9 +1,13 @@
-import React from 'react'
+import SettingsCard from "../System-settingsComp/SettingsCard";
 
-const SystemstSetingsPage = () => {
-  return (
-    <div>SystemstSetingsPage</div>
-  )
+const SystemSettingsPage = () => {
+    return (
+        <div className="w-full">
+            <p className="mb-4 text-[15px] font-medium text-[#F26522]">
+                Hi, welcome back!
+            </p>
+            <SettingsCard />
+        </div>
+    );
 }
-
-export default SystemstSetingsPage
+export default SystemSettingsPage;
