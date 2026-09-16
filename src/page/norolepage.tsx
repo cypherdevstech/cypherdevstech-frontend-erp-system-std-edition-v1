@@ -1,7 +1,7 @@
 // [NoRolePage.tsx]
 import React from "react";
 import TopBar from "../components/TopBar";
-import NoRoleCard from "../components/norolecard";
+import NoRoleCard from "../components/NoRoleCard";
 // NO_ROLE_ROWS / NO_ROLE_COLUMNS may not be exported from ../components/data.
 // Provide local fallbacks to avoid module errors.
 const NO_ROLE_ROWS: NoRoleRow[] = [];
