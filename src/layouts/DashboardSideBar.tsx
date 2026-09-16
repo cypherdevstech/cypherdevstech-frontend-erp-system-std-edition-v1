@@ -29,7 +29,7 @@ const items: Item[] = [
 ];
 
 export default function DashboardSideBar({
-    activeItem = "Branches",
+    activeItem = "Users",
     logoSrc,
     onSelect,
 }: {
