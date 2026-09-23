@@ -45,7 +45,7 @@ const items: Item[] = [
 ];
 
 export default function DashboardSideBar({
-    activeItem = "System Settings",
+    activeItem = "Users",
     activeSubItem,
     logoSrc,
     onSelect,

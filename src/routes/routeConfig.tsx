@@ -5,7 +5,11 @@ import CreateInvtoryPage from "../page/createinvtorypage";
 import InventoryPage from "../page/inventorypage";
 import ListInventoryPage from "../page/listinventorypage";
 import SystemstSetingsPage from "../page/systemsteetingspage";
-
+import UserPage from "../page/userpage";
+import BranchManagerPage from "../page/branchmanagerpage";
+import InventoryAdminPage from "../page/inventoryadminpage";
+import StaffPage from "../page/staffpage"
+import NoRolePage from "../page/norolepage"
 export const routeConfig = [
     {
         element: <MainLayout />,
@@ -36,9 +40,32 @@ export const routeConfig = [
                     },
                     {
                         path: 'create', element: <CreateBranchPage />
+                    },
+
+                ]
+            },
+            {
+                path: 'user-page',
+                children: [
+                    {
+                        index: true, element: <UserPage />
                     }
                 ]
+            },
+
+            {
+                path: 'manager', element: <BranchManagerPage />
+            },
+            {
+                path: 'inventories', element: <InventoryAdminPage/>
+            },
+            {
+                path: "staff", element: <StaffPage/>
+            },
+            {
+                path: "norole", element: <NoRolePage/>
             }
+
         ],
     },
 ]
